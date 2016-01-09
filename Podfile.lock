@@ -1,0 +1,20 @@
+PODS:
+  - Alamofire (3.1.4)
+  - FBSnapshotTestCase (2.0.7):
+    - FBSnapshotTestCase/SwiftSupport (= 2.0.7)
+  - FBSnapshotTestCase/Core (2.0.7)
+  - FBSnapshotTestCase/SwiftSupport (2.0.7):
+    - FBSnapshotTestCase/Core
+  - Fuzi (0.3.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.0)
+  - FBSnapshotTestCase
+  - Fuzi (~> 0.3.0)
+
+SPEC CHECKSUMS:
+  Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
+  FBSnapshotTestCase: 7e85180d0d141a0cf472352edda7e80d7eaeb547
+  Fuzi: 4725b8743f0a92100108e013347bf32ca80d93a1
+
+COCOAPODS: 0.39.0
