@@ -58,7 +58,17 @@ class DOMInspectorController: UITableViewController {
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let tableCell = tableView.dequeueReusableCellWithIdentifier("node") as! NodeCell
 		tableCell.node = nodes[indexPath.row]
+		tableCell.delegate = self
+		tableCell.expanded = nodeIsExpandedAtIndexPath(indexPath)
 		return tableCell
+	}
+	
+	private func nodeIsExpandedAtIndexPath(indexPath: NSIndexPath) -> Bool {
+		let node = nodes[indexPath.row]
+		let nextIndex = indexPath.row + 1
+		let nextNode: XMLElement? = nextIndex == nodes.count ? nil : nodes[nextIndex]
+		
+		return nextNode == node.children.first
 	}
 	
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -71,7 +81,7 @@ class DOMInspectorController: UITableViewController {
 //		let node = nodes[indexPath.row]
 //		let nextIndex = indexPath.row + 1
 //		let nextNode: XMLElement? = nextIndex == nodes.count ? nil : nodes[nextIndex]
-//		
+//
 //		if nextNode != node.children.first {
 //			insertChildrenOfNodeAtIndexPath(indexPath)
 //		} else {
@@ -112,4 +122,17 @@ class DOMInspectorController: UITableViewController {
 		UIPasteboard.generalPasteboard().string = node
 	}
 	
+}
+
+extension DOMInspectorController: NodeCellDelegate {
+	func nodeCellDidTapDisclosureIndicator(nodeCell: NodeCell) {
+		guard let indexPath = tableView.indexPathForCell(nodeCell) else { return }
+		nodeCell.expanded = !nodeCell.expanded
+		
+		if nodeIsExpandedAtIndexPath(indexPath) {
+			removeChildrenOfNodeAtIndexPath(indexPath)
+		} else {
+			insertChildrenOfNodeAtIndexPath(indexPath)
+		}
+	}
 }

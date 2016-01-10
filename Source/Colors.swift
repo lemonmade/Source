@@ -9,6 +9,10 @@
 import UIKit
 
 struct Colors {
+	static let clear = UIColor.clearColor()
+	static let white = UIColor.whiteColor()
+	static let black = UIColor.blackColor()
+	
 	static let blue = UIColor.rgb(93, 124, 255)
 	
 	static let grayLight = UIColor.rgb(240, 240, 240)

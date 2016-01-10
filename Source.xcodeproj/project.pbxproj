@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		30D8B008E711241E607A13FB /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A73D2979EE3D8B989BC9548F /* Pods.framework */; };
 		824134F87417A3590EEAE1E0 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A73D2979EE3D8B989BC9548F /* Pods.framework */; };
+		831000401C41916400B8B993 /* DisclosureIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8310003F1C41916400B8B993 /* DisclosureIndicator.swift */; };
+		831000421C4192EF00B8B993 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831000411C4192EF00B8B993 /* UIStackView+Extensions.swift */; };
+		831000451C41932800B8B993 /* UIStackView+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831000441C41932800B8B993 /* UIStackView+ExtensionsTests.swift */; };
 		83DF0D991C414B8C00E92B0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83DF0D981C414B8C00E92B0E /* Assets.xcassets */; };
 		83DF0D9C1C414B8C00E92B0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83DF0D9A1C414B8C00E92B0E /* LaunchScreen.storyboard */; };
 		83DF0DE41C414C1900E92B0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DF0DCE1C414C1900E92B0E /* AppDelegate.swift */; };
@@ -76,6 +79,9 @@
 		70A5A881C234B08B8D7F6026 /* Pods-Source.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Source.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Source/Pods-Source.debug.xcconfig"; sourceTree = "<group>"; };
 		81351BB1736E68661790B549 /* Pods-SourceSnapshotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SourceSnapshotTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SourceSnapshotTests/Pods-SourceSnapshotTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8310003E1C41549600B8B993 /* Source-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Source-Bridging-Header.h"; sourceTree = "<group>"; };
+		8310003F1C41916400B8B993 /* DisclosureIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisclosureIndicator.swift; sourceTree = "<group>"; };
+		831000411C4192EF00B8B993 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
+		831000441C41932800B8B993 /* UIStackView+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		83DF0D8E1C414B8C00E92B0E /* Source.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Source.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83DF0D981C414B8C00E92B0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83DF0D9B1C414B8C00E92B0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -186,6 +192,7 @@
 				83DF0DE01C414C1900E92B0E /* UIView+Autolayout.swift */,
 				83DF0DE11C414C1900E92B0E /* UIView+Style.swift */,
 				83DF0DE21C414C1900E92B0E /* UIViewController+Extensions.swift */,
+				831000411C4192EF00B8B993 /* UIStackView+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -206,6 +213,7 @@
 				83DF0DD71C414C1900E92B0E /* NodeCell.swift */,
 				83DF0DDA1C414C1900E92B0E /* ResizableHandle.swift */,
 				83DF0DDB1C414C1900E92B0E /* ResizableSplitController.swift */,
+				8310003F1C41916400B8B993 /* DisclosureIndicator.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -248,6 +256,7 @@
 				83DF0E021C414C7400E92B0E /* UIEdgeInsets+ExtensionsTests.swift */,
 				8310003C1C4153CC00B8B993 /* UIView+Extensions */,
 				83DF0E051C414C7400E92B0E /* UIViewController+ExtensionsTests.swift */,
+				831000441C41932800B8B993 /* UIStackView+ExtensionsTests.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -652,8 +661,10 @@
 				83DF0DE71C414C1900E92B0E /* Coordinator.swift in Sources */,
 				83DF0DE41C414C1900E92B0E /* AppDelegate.swift in Sources */,
 				83DF0DF01C414C1900E92B0E /* ResizableHandle.swift in Sources */,
+				831000421C4192EF00B8B993 /* UIStackView+Extensions.swift in Sources */,
 				83DF0DE81C414C1900E92B0E /* DOMInspectorController.swift in Sources */,
 				83DF0DEC1C414C1900E92B0E /* NodeAttributeCell.swift in Sources */,
+				831000401C41916400B8B993 /* DisclosureIndicator.swift in Sources */,
 				83DF0DE61C414C1900E92B0E /* Colors.swift in Sources */,
 				83DF0DF21C414C1900E92B0E /* RootCoordinator.swift in Sources */,
 				83DF0DEE1C414C1900E92B0E /* NodeInspectorController.swift in Sources */,
@@ -682,6 +693,7 @@
 				83DF0E091C414C7400E92B0E /* UIColor+ExtensionsTests.swift in Sources */,
 				83DF0E0A1C414C7400E92B0E /* UIEdgeInsets+ExtensionsTests.swift in Sources */,
 				83DF0E061C414C7400E92B0E /* CGRect+ExtensionsTests.swift in Sources */,
+				831000451C41932800B8B993 /* UIStackView+ExtensionsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,6 +22,10 @@ extension XMLElement {
 		return depth
 	}
 	
+	var isEmpty: Bool {
+		return children.isEmpty
+	}
+	
 	var tokenList: [Token] {
 		var tokens = [Token(content: "<\(tag!)", scope: .Tag)]
 		
@@ -29,7 +33,7 @@ extension XMLElement {
 			tokens.appendContentsOf([
 				Token(content: " \(attribute)=", scope: .AttributeName),
 				Token(content: "\"\(value)\"", scope: .AttributeValue)
-			])
+				])
 		}
 		
 		tokens.append(Token(content: children.isEmpty ? " />" : ">", scope: .Tag))
@@ -38,22 +42,44 @@ extension XMLElement {
 	}
 }
 
+protocol NodeCellDelegate: class {
+	func nodeCellDidTapDisclosureIndicator(nodeCell: NodeCell)
+}
+
 class NodeCell: UITableViewCell {
 	
+	struct Constants {
+		static let disclosureIndicatorSpacing: CGFloat = 5
+	}
+	
 	private let label = UILabel()
+	private let layoutView = UIStackView(axis: .Horizontal, spacing: Constants.disclosureIndicatorSpacing)
+	private let disclosureIndicator = DisclosureIndicator()
+	
+	var expanded: Bool = false {
+		didSet {
+			guard oldValue != expanded else { return }
+			render()
+		}
+	}
+	
+	weak var delegate: NodeCellDelegate?
+	
 	private let theme = DefaultTheme()
-	private var leadingConstraint: NSLayoutConstraint!
+	private var leadingConstraint: NSLayoutConstraint?
 	
 	override var indentationLevel: Int {
 		didSet {
-			leadingConstraint.constant = CGFloat(indentationLevel) * indentationWidth
+			guard oldValue != indentationLevel else { return }
+			leadingConstraint?.constant = CGFloat(indentationLevel) * indentationWidth
 			setNeedsLayout()
 		}
 	}
 	
 	override var indentationWidth: CGFloat {
 		didSet {
-			leadingConstraint.constant = CGFloat(indentationLevel) * indentationWidth
+			guard oldValue != indentationWidth else { return }
+			leadingConstraint?.constant = CGFloat(indentationLevel) * indentationWidth
 			setNeedsLayout()
 		}
 	}
@@ -78,26 +104,33 @@ class NodeCell: UITableViewCell {
 	}
 	
 	private func setup() {
-		contentView.addSubviewsForAutolayout(label)
-		
 		selectedBackgroundView = UIView(backgroundColor: Colors.grayLight)
 		
 		label.numberOfLines = 0
 		label.font = UIFont(name: "Menlo-Regular", size: 14.0)
 		label.lineBreakMode = .ByWordWrapping
 		
-		contentView.preservesSuperviewLayoutMargins = false
-		contentView.layoutMargins = UIEdgeInsets(top: 6, left: 16, bottom: 6, right: 16)
-		
-		let layoutMarginsGuide = contentView.layoutMarginsGuide
-		leadingConstraint = label.leadingAnchor.constraintEqualToAnchor(layoutMarginsGuide.leadingAnchor)
+		contentView.addSubviewsForAutolayout(layoutView)
+		leadingConstraint = layoutView.leadingAnchor.constraintEqualToAnchor(contentView.leadingAnchor)
 		
 		NSLayoutConstraint.activateConstraints([
-			leadingConstraint,
-			label.trailingAnchor.constraintEqualToAnchor(layoutMarginsGuide.trailingAnchor),
-			label.topAnchor.constraintEqualToAnchor(layoutMarginsGuide.topAnchor),
-			label.bottomAnchor.constraintEqualToAnchor(layoutMarginsGuide.bottomAnchor)
+			leadingConstraint!,
+			layoutView.trailingAnchor.constraintEqualToAnchor(contentView.trailingAnchor),
+			layoutView.topAnchor.constraintEqualToAnchor(contentView.topAnchor),
+			layoutView.bottomAnchor.constraintEqualToAnchor(contentView.bottomAnchor)
 		])
+		
+		layoutView.layoutMarginsRelativeArrangement = true
+		layoutView.layoutMargins = UIEdgeInsets(top: 6, left: 16, bottom: 6, right: 16)
+		
+		layoutView.addArrangedSubviews(disclosureIndicator, label)
+		disclosureIndicator.setContentHuggingPriority(UILayoutPriorityRequired, forAxis: .Horizontal)
+		
+		disclosureIndicator.addTarget(self, action: "onDisclosurePress", forControlEvents: .TouchUpInside)
+	}
+	
+	dynamic func onDisclosurePress() {
+		delegate?.nodeCellDidTapDisclosureIndicator(self)
 	}
 	
 	private func render() {
@@ -109,6 +142,10 @@ class NodeCell: UITableViewCell {
 		
 		indentationLevel = node.depth
 		label.attributedText = theme.attributedStringForTokenList(node.tokenList)
+		
+		disclosureIndicator.expanded = expanded
+		disclosureIndicator.alpha = node.isEmpty ? 0 : 1
+//		disclosureIndicator.hidden = node.isEmpty
 	}
 	
 }
