@@ -9,39 +9,6 @@
 import UIKit
 import Fuzi
 
-extension XMLElement {
-	var depth: Int {
-		var depth = -1
-		var node: XMLElement? = self
-		
-		while node?.parent != nil {
-			node = node?.parent
-			depth += 1
-		}
-		
-		return depth
-	}
-	
-	var isEmpty: Bool {
-		return children.isEmpty
-	}
-	
-	var tokenList: [Token] {
-		var tokens = [Token(content: "<\(tag!)", scope: .Tag)]
-		
-		attributes.forEach { attribute, value in
-			tokens.appendContentsOf([
-				Token(content: " \(attribute)=", scope: .AttributeName),
-				Token(content: "\"\(value)\"", scope: .AttributeValue)
-				])
-		}
-		
-		tokens.append(Token(content: children.isEmpty ? " />" : ">", scope: .Tag))
-		
-		return tokens
-	}
-}
-
 protocol NodeCellDelegate: class {
 	func nodeCellDidTapDisclosureIndicator(nodeCell: NodeCell)
 }

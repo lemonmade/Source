@@ -34,8 +34,25 @@ class WebViewController: UIViewController {
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		let request = NSURLRequest(URL: NSURL(string: "https://www.shopify.ca")!)
-		webView.loadRequest(request)
+//		let request = NSURLRequest(URL: NSURL(string: "http://bigfootjs.com/")!)
+//		webView.loadRequest(request)
+		webView.loadFileURL(
+			NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("ExampleDocument", ofType: "html")!),
+			allowingReadAccessToURL: NSURL(fileURLWithPath: NSBundle.mainBundle().bundlePath)
+		)
+	}
+	
+	func highlightNodeWithSelector(selector: String) {
+		let javascript = [
+			"(function() {",
+			"  var node = document.querySelector('\(selector)');",
+			"  node.style.backgroundColor = 'blue';",
+			"})()"
+		].joinWithSeparator("\n")
+		
+		webView.evaluateJavaScript(javascript) { result, error in
+			print(result, error)
+		}
 	}
 
 }

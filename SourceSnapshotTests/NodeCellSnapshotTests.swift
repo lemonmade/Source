@@ -6,10 +6,9 @@
 //  Copyright © 2016 lemonmade. All rights reserved.
 //
 
-@testable import Source
-
 import FBSnapshotTestCase
 import Fuzi
+@testable import Source
 
 class NodeCellSnapshotTests: FBSnapshotTestCase {
 	

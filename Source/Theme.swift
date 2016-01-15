@@ -51,6 +51,11 @@ struct Token {
 	}
 }
 
+extension Token: Equatable {}
+func == (lhs: Token, rhs: Token) -> Bool {
+	return lhs.content == rhs.content && lhs.scope == rhs.scope
+}
+
 extension Theme {
 	func attributedStringForTokenList(tokens: [Token]) -> NSAttributedString {
 		let string = NSMutableAttributedString()

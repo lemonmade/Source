@@ -58,6 +58,7 @@ extension InspectorCoordinator: UISplitViewControllerDelegate {
 extension InspectorCoordinator: DOMInspectorControllerDelegate {
 	func domInspectorController(controller: DOMInspectorController, didSelectNode node: XMLElement) {
 		domAttributeSplitController.showDetailViewController(NodeInspectorController(node: node), sender: self)
+		webViewController.highlightNodeWithSelector(node.uniqueSelector)
 	}
 }
 

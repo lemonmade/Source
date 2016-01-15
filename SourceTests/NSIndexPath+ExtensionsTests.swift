@@ -10,41 +10,30 @@ import XCTest
 @testable import Source
 
 class NSIndexPath_ExtensionsTests: XCTestCase {
+	
+	private func verifyIndexPaths(indexPaths: [NSIndexPath], fromRow: Int, toRow: Int, fromSection: Int, toSection: Int) {
+		let sectionCount = (toSection - fromSection + 1)
+		let rowCount = (toRow - fromRow + 1)
+		
+		XCTAssertEqual(indexPaths.count, sectionCount * rowCount)
+		
+		for section in fromSection...toSection {
+			for row in fromRow...toRow {
+				XCTAssert(indexPaths.contains(NSIndexPath(forRow: row, inSection: section)))
+			}
+		}
+	}
     
 	func testIndexPathsForRowsInRangeReturnsAllIndexPathsInTheFirstSection() {
-		let actual = NSIndexPath.indexPathsForRowsInRange(3...5)
-		let expected = [
-			NSIndexPath(forRow: 3, inSection: 0),
-			NSIndexPath(forRow: 4, inSection: 0),
-			NSIndexPath(forRow: 5, inSection: 0)
-		]
-		
-		XCTAssertEqual(actual, expected)
+		verifyIndexPaths(NSIndexPath.indexPathsForRowsInRange(3...5), fromRow: 3, toRow: 5, fromSection: 0, toSection: 0)
 	}
 	
 	func testIndexPathsForRowsInRangeUsesPassedSection() {
-		let actual = NSIndexPath.indexPathsForRowsInRange(1..<4, inSection: 4)
-		let expected = [
-			NSIndexPath(forRow: 1, inSection: 4),
-			NSIndexPath(forRow: 2, inSection: 4),
-			NSIndexPath(forRow: 3, inSection: 4)
-		]
-		
-		XCTAssertEqual(actual, expected)
+		verifyIndexPaths(NSIndexPath.indexPathsForRowsInRange(1..<4, inSection: 4), fromRow: 1, toRow: 3, fromSection: 4, toSection: 4)
 	}
 	
 	func testIndexPathsForRowsInRangeUsesPassedSectionRange() {
-		let actual = NSIndexPath.indexPathsForRowsInRange(1...2, forSectionsInRange: 2..<5)
-		let expected = [
-			NSIndexPath(forRow: 1, inSection: 2),
-			NSIndexPath(forRow: 2, inSection: 2),
-			NSIndexPath(forRow: 1, inSection: 3),
-			NSIndexPath(forRow: 2, inSection: 3),
-			NSIndexPath(forRow: 1, inSection: 4),
-			NSIndexPath(forRow: 2, inSection: 4)
-		]
-		
-		XCTAssertEqual(actual, expected)
+		verifyIndexPaths(NSIndexPath.indexPathsForRowsInRange(1...2, forSectionsInRange: 2..<5), fromRow: 1, toRow: 2, fromSection: 2, toSection: 4)
 	}
     
 }

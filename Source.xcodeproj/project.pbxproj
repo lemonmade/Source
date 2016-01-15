@@ -12,6 +12,9 @@
 		831000401C41916400B8B993 /* DisclosureIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8310003F1C41916400B8B993 /* DisclosureIndicator.swift */; };
 		831000421C4192EF00B8B993 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831000411C4192EF00B8B993 /* UIStackView+Extensions.swift */; };
 		831000451C41932800B8B993 /* UIStackView+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831000441C41932800B8B993 /* UIStackView+ExtensionsTests.swift */; };
+		838C544D1C486CDA0004E112 /* XMLElement+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838C544C1C486CDA0004E112 /* XMLElement+Extensions.swift */; };
+		838C54501C486D890004E112 /* XMLElement+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838C544F1C486D890004E112 /* XMLElement+ExtensionsTests.swift */; };
+		83A61D671C487D8E00045983 /* ExampleDocument.html in Resources */ = {isa = PBXBuildFile; fileRef = 83A61D661C487D8E00045983 /* ExampleDocument.html */; };
 		83DF0D991C414B8C00E92B0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83DF0D981C414B8C00E92B0E /* Assets.xcassets */; };
 		83DF0D9C1C414B8C00E92B0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83DF0D9A1C414B8C00E92B0E /* LaunchScreen.storyboard */; };
 		83DF0DE41C414C1900E92B0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DF0DCE1C414C1900E92B0E /* AppDelegate.swift */; };
@@ -82,6 +85,9 @@
 		8310003F1C41916400B8B993 /* DisclosureIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisclosureIndicator.swift; sourceTree = "<group>"; };
 		831000411C4192EF00B8B993 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
 		831000441C41932800B8B993 /* UIStackView+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+ExtensionsTests.swift"; sourceTree = "<group>"; };
+		838C544C1C486CDA0004E112 /* XMLElement+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XMLElement+Extensions.swift"; sourceTree = "<group>"; };
+		838C544F1C486D890004E112 /* XMLElement+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XMLElement+ExtensionsTests.swift"; sourceTree = "<group>"; };
+		83A61D661C487D8E00045983 /* ExampleDocument.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ExampleDocument.html; sourceTree = "<group>"; };
 		83DF0D8E1C414B8C00E92B0E /* Source.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Source.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83DF0D981C414B8C00E92B0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83DF0D9B1C414B8C00E92B0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -189,10 +195,10 @@
 				83DF0DD91C414C1900E92B0E /* NSIndexPath+Extensions.swift */,
 				83DF0DDE1C414C1900E92B0E /* UIColor+Extensions.swift */,
 				83DF0DDF1C414C1900E92B0E /* UIEdgeInsets+Extensions.swift */,
-				83DF0DE01C414C1900E92B0E /* UIView+Autolayout.swift */,
-				83DF0DE11C414C1900E92B0E /* UIView+Style.swift */,
+				838C544E1C486CE10004E112 /* UIView+Extensions */,
 				83DF0DE21C414C1900E92B0E /* UIViewController+Extensions.swift */,
 				831000411C4192EF00B8B993 /* UIStackView+Extensions.swift */,
+				838C544C1C486CDA0004E112 /* XMLElement+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -225,6 +231,7 @@
 				83DF0DD31C414C1900E92B0E /* InspectorCoordinator.swift */,
 				83DF0DD81C414C1900E92B0E /* NodeInspectorController.swift */,
 				83DF0DE31C414C1900E92B0E /* WebViewController.swift */,
+				83A61D661C487D8E00045983 /* ExampleDocument.html */,
 			);
 			name = Sections;
 			sourceTree = "<group>";
@@ -257,6 +264,7 @@
 				8310003C1C4153CC00B8B993 /* UIView+Extensions */,
 				83DF0E051C414C7400E92B0E /* UIViewController+ExtensionsTests.swift */,
 				831000441C41932800B8B993 /* UIStackView+ExtensionsTests.swift */,
+				838C544F1C486D890004E112 /* XMLElement+ExtensionsTests.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -266,6 +274,15 @@
 			children = (
 				83DF0E031C414C7400E92B0E /* UIView+AutolayoutTests.swift */,
 				83DF0E041C414C7400E92B0E /* UIView+StyleTests.swift */,
+			);
+			name = "UIView+Extensions";
+			sourceTree = "<group>";
+		};
+		838C544E1C486CE10004E112 /* UIView+Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				83DF0DE01C414C1900E92B0E /* UIView+Autolayout.swift */,
+				83DF0DE11C414C1900E92B0E /* UIView+Style.swift */,
 			);
 			name = "UIView+Extensions";
 			sourceTree = "<group>";
@@ -486,6 +503,7 @@
 			files = (
 				83DF0D9C1C414B8C00E92B0E /* LaunchScreen.storyboard in Resources */,
 				83DF0D991C414B8C00E92B0E /* Assets.xcassets in Resources */,
+				83A61D671C487D8E00045983 /* ExampleDocument.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,6 +677,7 @@
 				83DF0DF91C414C1900E92B0E /* WebViewController.swift in Sources */,
 				83DF0DEF1C414C1900E92B0E /* NSIndexPath+Extensions.swift in Sources */,
 				83DF0DE71C414C1900E92B0E /* Coordinator.swift in Sources */,
+				838C544D1C486CDA0004E112 /* XMLElement+Extensions.swift in Sources */,
 				83DF0DE41C414C1900E92B0E /* AppDelegate.swift in Sources */,
 				83DF0DF01C414C1900E92B0E /* ResizableHandle.swift in Sources */,
 				831000421C4192EF00B8B993 /* UIStackView+Extensions.swift in Sources */,
@@ -691,6 +710,7 @@
 				83DF0E0C1C414C7400E92B0E /* UIView+StyleTests.swift in Sources */,
 				83DF0E071C414C7400E92B0E /* Int+ExtensionsTest.swift in Sources */,
 				83DF0E091C414C7400E92B0E /* UIColor+ExtensionsTests.swift in Sources */,
+				838C54501C486D890004E112 /* XMLElement+ExtensionsTests.swift in Sources */,
 				83DF0E0A1C414C7400E92B0E /* UIEdgeInsets+ExtensionsTests.swift in Sources */,
 				83DF0E061C414C7400E92B0E /* CGRect+ExtensionsTests.swift in Sources */,
 				831000451C41932800B8B993 /* UIStackView+ExtensionsTests.swift in Sources */,
